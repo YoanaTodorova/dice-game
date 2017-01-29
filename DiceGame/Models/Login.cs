@@ -9,20 +9,13 @@ namespace DiceGame.Models
     {
         public int Id { get; set; }
         public string Token { get; set; }
-        private int UserId { get; set; }
+        public User User { get; set; }
 
-        public Login(int Id, int UserId)
+        public Login(int Id, User User)
         {
             this.Id = Id;
-            this.UserId = UserId;
+            this.User = User;
             this.Token = "some token";
-        }
-
-        public User User()
-        {
-            var repo = new UsersRepository();
-            User user = repo.Get(UserId);
-            return user;
         }
     }
 }
