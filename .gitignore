@@ -1,8 +1,6 @@
 *.dll
 *.config
 .vs/DiceGame/v15/.suo
-*.cache
-DiceGame/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.htm
-DiceGame/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 *.cache
+*.pdb

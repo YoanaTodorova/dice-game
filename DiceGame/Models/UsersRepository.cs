@@ -8,12 +8,23 @@ namespace DiceGame
 {
     public class UsersRepository
     {
-        Dictionary<int, User> Users = new Dictionary<int,User>()
+        static Dictionary<int, User> Users = new Dictionary<int,User>()
         {
             { 1, new User { Id = 1 } },
             { 2, new User { Id = 2 } }
         };
 
+        public static void SetUsersRepository(List<User> usrlist)
+        {
+            Users.Clear();
+            foreach (User item in usrlist)
+            {
+                if (!Users.ContainsKey(item.Id))
+                {
+                    Users.Add(item.Id, item);
+                }
+            }
+        }
         public User Get(int id)
         {
             if (!Users.ContainsKey(id))
@@ -22,9 +33,9 @@ namespace DiceGame
             return Users[id];
         }
 
-        public User GetByUserNameAndPassword(string username, string password)
+        public static User GetByEmailAndPassword(string username, string password)
         {
-            string pwhash = PasswordHandler.GetHash(password);
+            string pwhash = HashGenerator.GetHash(password);
             User user = GetAll().Where(x => x.Email.ToLower() == username.ToLower() && x.Password == pwhash).First();
             if (user == null)
                 throw new NotFoundException("No user with this id.");
@@ -56,7 +67,7 @@ namespace DiceGame
             Users.Remove(id);
         }
 
-        public List<User> GetAll()
+        public static List<User> GetAll()
         {
             return Users.Values.ToList();
         }

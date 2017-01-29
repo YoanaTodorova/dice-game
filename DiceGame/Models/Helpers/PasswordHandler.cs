@@ -7,7 +7,7 @@ using System.Web;
 
 namespace DiceGame.Models.Helpers
 {
-    public static class PasswordHandler
+    public static class HashGenerator
     {
         public static string GetHash(string password)
         {
