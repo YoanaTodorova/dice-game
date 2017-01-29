@@ -127,6 +127,7 @@
     <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Filters\NotFoundExceptionAttribute.cs" />
+    <Compile Include="Filters\UnauthorizedExceptionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -134,6 +135,7 @@
 
     <Compile Include="Models\Helpers\DataBaseHandler.cs" />
     <Compile Include="Models\Helpers\PasswordHandler.cs" />
+    <Compile Include="Models\Helpers\TokenGenerator.cs" />
 
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\LoginRepository.cs" />

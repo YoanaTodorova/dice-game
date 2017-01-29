@@ -19,9 +19,9 @@ namespace DiceGame.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public Task<HttpResponseMessage> Create()
+        public Task<HttpResponseMessage> Create([FromBody] User user)
         {
-            var login = _repository.Create("username","password");
+            var login = _repository.Create(user.Email, user.Password);
             return Task.FromResult(Request.CreateResponse(HttpStatusCode.Created, login));
         }
     }

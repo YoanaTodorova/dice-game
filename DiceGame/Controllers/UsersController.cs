@@ -11,10 +11,9 @@ namespace DiceGame.Controllers
     public class UsersController : ApiController
     {
         private readonly UsersRepository _repository;
-
         public UsersController()
         {
-           this. _repository = new UsersRepository();
+            this._repository = new UsersRepository();
         }
 
         // GET api/users

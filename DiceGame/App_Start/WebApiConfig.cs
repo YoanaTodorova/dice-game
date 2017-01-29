@@ -15,6 +15,7 @@ namespace DiceGame
             );
 
             config.Filters.Add(new NotFoundExceptionAttribute());
+            config.Filters.Add(new UnauthorizedExceptionAttribute());
             config.Filters.Add(new AuthorizeAttribute());
         }
     }

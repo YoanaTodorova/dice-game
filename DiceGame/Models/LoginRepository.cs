@@ -7,10 +7,17 @@ namespace DiceGame
 {
     public class LoginRepository
     {
-        public Login Create(string username, string password)
+        private UsersRepository _userRepository;
+        public LoginRepository()
         {
-            User user = UsersRepository.GetByEmailAndPassword(username, password);
-            Login login = new Login(1, 1);
+            _userRepository = new UsersRepository();
+        }
+
+        public Login Create(string email, string password)
+        {
+            
+            User user = _userRepository.GetByEmailAndPassword(email, password);
+            Login login = new Login(1, user);
             return login;
         }
     }

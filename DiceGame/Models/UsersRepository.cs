@@ -10,8 +10,8 @@ namespace DiceGame
     {
         static Dictionary<int, User> Users = new Dictionary<int,User>()
         {
-            { 1, new User { Id = 1 } },
-            { 2, new User { Id = 2 } }
+            { 1, new User { Id = 1, Email = "email1", Password = "password1" } },
+            { 2, new User { Id = 2, Email = "email2", Password = "password2" } }
         };
 
         public static void SetUsersRepository(List<User> usrlist)
@@ -33,14 +33,17 @@ namespace DiceGame
             return Users[id];
         }
 
-        public static User GetByEmailAndPassword(string username, string password)
+        //TODO: Find user by email and then compare to password; if not - throw Unauthorized
+        public User GetByEmailAndPassword(string email, string password)
         {
-            string pwhash = HashGenerator.GetHash(password);
-            User user = GetAll().Where(x => x.Email.ToLower() == username.ToLower() && x.Password == pwhash).First();
-            if (user == null)
-                throw new NotFoundException("No user with this id.");
+            //string pwhash = PasswordHandler.GetHash(password);
+            string pwhash = password;
+            List<User> users = GetAll()
+                .Where(x => x.Email.ToLower() == email.ToLower() && x.Password == pwhash).ToList();
+            if (users.Count == 0)
+                throw new UnauthorizedAccessException("Wrong username or password.");
 
-            return user;
+            return users.First();
         }
 
         public void Create(User user)
