@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -131,9 +132,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Game.cs" />
+
+    <Compile Include="Models\Helpers\DataBaseHandler.cs" />
+    <Compile Include="Models\Helpers\PasswordHandler.cs" />
     <Compile Include="Models\Helpers\TokenGenerator.cs" />
+
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\LoginRepository.cs" />
+
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UsersRepository.cs" />
     <Compile Include="NotFoundException.cs" />

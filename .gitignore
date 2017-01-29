@@ -1,0 +1,6 @@
+*.dll
+*.config
+.vs/DiceGame/v15/.suo
+*.htm
+*.cache
+*.pdb

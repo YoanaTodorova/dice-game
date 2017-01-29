@@ -21,7 +21,8 @@ namespace DiceGame.Controllers
         [AllowAnonymous]
         public HttpResponseMessage Get()
         {
-            var users = _repository.GetAll();
+            var users = UsersRepository.GetAll();
+            Models.Helpers.DataBaseHandler.SetUsers(UsersRepository.GetAll());
             return Request.CreateResponse(HttpStatusCode.OK, users);
         }
 
