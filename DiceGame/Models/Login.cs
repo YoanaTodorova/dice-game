@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DiceGame.Models.Helpers;
 
 namespace DiceGame.Models
 {
@@ -15,7 +16,7 @@ namespace DiceGame.Models
         {
             this.Id = Id;
             this.User = User;
-            this.Token = "some token";
+            this.Token = TokenGenerator.generate();
         }
     }
 }
