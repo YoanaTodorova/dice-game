@@ -124,14 +124,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Filters\NotFoundExceptionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Game.cs" />
+
     <Compile Include="Models\Helpers\DataBaseHandler.cs" />
     <Compile Include="Models\Helpers\PasswordHandler.cs" />
+
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\LoginRepository.cs" />
+
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UsersRepository.cs" />
     <Compile Include="NotFoundException.cs" />
