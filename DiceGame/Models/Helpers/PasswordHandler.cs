@@ -11,11 +11,16 @@ namespace DiceGame.Models.Helpers
     {
         public static string GetHash(string password)
         {
-            string hashstring = password; //TODO
+            string hashstring = "";
             using (SHA512 shaM = new SHA512Managed())
             {
                 var data = Encoding.UTF8.GetBytes(password);
                 byte[] hash = shaM.ComputeHash(data);
+
+                foreach (byte x in hash)
+                {
+                    hashstring += String.Format("{0:x2}", x);
+                }
             }
             return hashstring;
         }
