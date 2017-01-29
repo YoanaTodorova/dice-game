@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DiceGame.Models;
+using DiceGame.Models.Helpers;
 
 namespace DiceGame
 {
@@ -19,6 +20,16 @@ namespace DiceGame
                 throw new NotFoundException("No user with this id.");
 
             return Users[id];
+        }
+
+        public User GetByUserNameAndPassword(string username, string password)
+        {
+            string pwhash = PasswordHandler.GetHash(password);
+            User user = GetAll().Where(x => x.Email.ToLower() == username.ToLower() && x.Password == pwhash).First();
+            if (user == null)
+                throw new NotFoundException("No user with this id.");
+
+            return user;
         }
 
         public void Create(User user)
