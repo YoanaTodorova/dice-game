@@ -14,9 +14,9 @@ namespace DiceGame
                 defaults: new { id = RouteParameter.Optional }
             );
 
+            config.Filters.Add(new CustomAuthorizeAttribute());
             config.Filters.Add(new NotFoundExceptionAttribute());
             config.Filters.Add(new UnauthorizedExceptionAttribute());
-            config.Filters.Add(new AuthorizeAttribute());
         }
     }
 }

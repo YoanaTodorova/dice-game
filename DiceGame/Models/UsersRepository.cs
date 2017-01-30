@@ -7,7 +7,7 @@ namespace DiceGame
 {
     public class UsersRepository
     {
-        Dictionary<int, User> Users = new Dictionary<int,User>()
+        static Dictionary<int, User> Users = new Dictionary<int,User>()
         {
             { 1, new User { Id = 1, Email = "email1", Password = "password1" } },
             { 2, new User { Id = 2, Email = "email2", Password = "password2" } }

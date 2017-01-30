@@ -16,7 +16,7 @@ namespace DiceGame.Models
         {
             this.Id = Id;
             this.User = User;
-            this.Token = TokenGenerator.generate();
+            this.Token = TokenManager.generate();
         }
     }
 }

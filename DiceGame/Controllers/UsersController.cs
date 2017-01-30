@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using DiceGame.Filters;
 using DiceGame.Models;
 
 namespace DiceGame.Controllers
 {
-    [Authorize]
     public class UsersController : ApiController
     {
         private readonly UsersRepository _repository;
@@ -18,25 +19,27 @@ namespace DiceGame.Controllers
 
         // GET api/users
         [HttpGet]
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [CustomAuthorize]
         public HttpResponseMessage Get()
         {
-            var users = _repository.GetAll();
+            List<User> users = _repository.GetAll();
             return Request.CreateResponse(HttpStatusCode.OK, users);
         }
 
         // GET api/users/5
-        //[NotFoundExceptionAttribute]
         [HttpGet]
-        [AllowAnonymous]
+        //[AllowAnonymous]
+        [CustomAuthorize]
         public HttpResponseMessage Get(int id)
         {
-            var user = _repository.Get(id);
+            User user = _repository.Get(id);
             return Request.CreateResponse(HttpStatusCode.OK, user);
         }
 
         // POST api/users
         [HttpPost]
+        [AllowAnonymous]
         public Task<HttpResponseMessage> Create([FromBody] User user)
         {
             _repository.Create(user);
@@ -60,11 +63,6 @@ namespace DiceGame.Controllers
 
         // PUT api/users/5
         //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        // DELETE api/users/5
-        //public void Delete(int id)
         //{
         //}
     }
