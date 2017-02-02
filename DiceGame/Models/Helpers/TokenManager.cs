@@ -21,5 +21,16 @@ namespace DiceGame.Models.Helpers
         {
             return true;
         }
+
+        internal static User getUser(string token)
+        {
+            var repo = new UsersRepository();
+            return repo.Get(2);
+        }
+
+        internal static System.Security.Principal.IPrincipal getUser()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

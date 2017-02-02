@@ -122,16 +122,21 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Filters\ForbiddenExceptionAttribute.cs" />
     <Compile Include="Filters\NotFoundExceptionAttribute.cs" />
     <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Filters\RequireUserToBeWantedResourceAttribute.cs" />
     <Compile Include="Filters\UnauthorizedExceptionAttribute.cs" />
+    <Compile Include="ForbiddenException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\GamesRepository.cs" />
     <Compile Include="Models\Helpers\TokenManager.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\LoginRepository.cs" />

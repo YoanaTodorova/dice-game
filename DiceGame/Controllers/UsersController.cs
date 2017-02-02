@@ -19,8 +19,7 @@ namespace DiceGame.Controllers
 
         // GET api/users
         [HttpGet]
-        //[AllowAnonymous]
-        [CustomAuthorize]
+        [AllowAnonymous]
         public HttpResponseMessage Get()
         {
             List<User> users = _repository.GetAll();
@@ -29,12 +28,11 @@ namespace DiceGame.Controllers
 
         // GET api/users/5
         [HttpGet]
-        //[AllowAnonymous]
         [CustomAuthorize]
-        public HttpResponseMessage Get(int id)
+        [RequireUserToBeWantedResource]
+        public Task<HttpResponseMessage> Get([FromUri]int id, User authorizedUser)
         {
-            User user = _repository.Get(id);
-            return Request.CreateResponse(HttpStatusCode.OK, user);
+            return Task.FromResult(Request.CreateResponse(HttpStatusCode.OK, authorizedUser));
         }
 
         // POST api/users
@@ -46,24 +44,25 @@ namespace DiceGame.Controllers
             return Task.FromResult(Request.CreateResponse(HttpStatusCode.Created));
         }
 
+        // PUT api/users/2
         [HttpPut]
-        public Task<HttpResponseMessage> Update([FromBody] User user)
+        [CustomAuthorize]
+        [RequireUserToBeWantedResource]
+        public Task<HttpResponseMessage> Update([FromUri]int id, [FromBody] User user)
         {
+            user.Id = id;
             _repository.Update(user);
             return Task.FromResult(Request.CreateResponse(HttpStatusCode.OK));
         }
 
         // DELETE api/users/1
         [HttpDelete]
-        public Task<HttpResponseMessage> Delete(int id)
+        [CustomAuthorize]
+        [RequireUserToBeWantedResource]
+        public Task<HttpResponseMessage> Delete([FromUri]int id, User authorizedUser)
         {
             _repository.Delete(id);
             return Task.FromResult(Request.CreateResponse(HttpStatusCode.OK));
         }
-
-        // PUT api/users/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
     }
 }
