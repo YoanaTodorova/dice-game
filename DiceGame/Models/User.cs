@@ -17,11 +17,14 @@ namespace DiceGame.Models
 
         public Balance CurrentBalance { get; set; }
 
-        public User()
-            : base()
+        public User(string email, string fullName, string password)
         {
             this.Id = NextId();
             this.CurrentBalance = new Balance(this.Id);
+
+            this.Email = email;
+            this.FullName = fullName;
+            this.Password = password;
         }
 
         private int NextId()

@@ -10,6 +10,8 @@ namespace DiceGame.Models.Helpers
     public static class TokenManager
     {
         static Random Rnd = new Random();
+        private static UsersRepository _userRepository = new UsersRepository();
+        private static LoginRepository _loginRepository = new LoginRepository();
 
         internal static string generate()
         {
@@ -19,13 +21,22 @@ namespace DiceGame.Models.Helpers
 
         internal static bool isTokenValid(string token)
         {
+            try
+            {
+                Login login = _loginRepository.FindByToken(token);
+            }
+            catch (NotFoundException)
+            {
+                return false;
+            }
             return true;
         }
 
         internal static User getUser(string token)
         {
-            var repo = new UsersRepository();
-            return repo.Get(2);
+            Login login = _loginRepository.FindByToken(token);
+            User user = _userRepository.Get(login.UserId);
+            return user;
         }
 
         internal static System.Security.Principal.IPrincipal getUser()

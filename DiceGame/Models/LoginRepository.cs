@@ -8,13 +8,13 @@ namespace DiceGame
 {
     public class LoginRepository
     {
-        static Dictionary<int, User> Logins = new Dictionary<int, User>();
+        static Dictionary<int, Login> Logins = new Dictionary<int, Login>();
 
         private UsersRepository _userRepository;
         public LoginRepository()
         {
             _userRepository = new UsersRepository();
-            initializeData();
+            //initializeData();
         }
 
         private void initializeData()
@@ -27,9 +27,26 @@ namespace DiceGame
         {
             
             User user = _userRepository.GetByEmailAndPassword(email, password);
-            Login login = new Login(1, user);
+            Login login = new Login(user);
+            Logins[login.Id] = login;
 
             return login;
+        }
+
+        public Login FindByToken(string token)
+        {
+            List<Login> logins = GetAll()
+                .Where(x => x.Token == token).ToList();
+
+            if (logins.Count == 0)
+                throw new NotFoundException("token not found");
+
+            return logins.First();
+        }
+
+        private List<Login> GetAll()
+        {
+            return Logins.Values.ToList();
         }
     }
 }

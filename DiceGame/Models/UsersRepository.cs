@@ -9,8 +9,8 @@ namespace DiceGame
     {
         static Dictionary<int, User> Users = new Dictionary<int,User>()
         {
-            { 1, new User { Id = 1, Email = "email1", Password = "password1" } },
-            { 2, new User { Id = 2, Email = "email2", Password = "password2" } }
+            { 1, new User("email1", "full name 1", "password1") },
+            { 2, new User("email2", "full name 2", "password2") }
         };
 
         public User Get(int id)
