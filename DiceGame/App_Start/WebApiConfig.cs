@@ -8,14 +8,21 @@ namespace DiceGame
     {
         public static void Register(HttpConfiguration config)
         {
+
+            //config.Routes.MapHttpRoute(
+            //      "Balance",
+            //      routeTemplate: "api/users/{id}/getAmount",
+            //      defaults: new { controller = "users", action = "getAmount" }
+            //);
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            
 
             config.Filters.Add(new CustomAuthorizeAttribute());
-            config.Filters.Add(new RequireUserToBeWantedResourceAttribute());
+            //config.Filters.Add(new RequireUserToBeWantedResourceAttribute());
 
             config.Filters.Add(new NotFoundExceptionAttribute());
             config.Filters.Add(new UnauthorizedExceptionAttribute());

@@ -32,10 +32,10 @@ namespace DiceGame.Filters
             if (TokenManager.isTokenValid(token))
             {
                 User user = TokenManager.getUser(token);
-                var identity = new GenericIdentity(user.Id.ToString());
-                string[] roles = new string[0];
-                var principal = new GenericPrincipal(identity, roles);
-                Thread.CurrentPrincipal = principal;
+                //var identity = new GenericIdentity(user.Id.ToString());
+                //string[] roles = new string[0];
+                //var principal = new GenericPrincipal(identity, roles);
+                //Thread.CurrentPrincipal = principal;
 
                 actionContext.ActionArguments["authorizedUser"] = user;
                 return;

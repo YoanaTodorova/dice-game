@@ -22,12 +22,11 @@ namespace DiceGame
             return Games[id];
         }
 
-        public void Create(Game game, User user)
+        public void Create(Game game)
         {
             if (Games.ContainsKey(game.Id))
                 throw new Exception("Game already exists");
 
-            game.Player = user;
             Games[game.Id] = game;
         }
 

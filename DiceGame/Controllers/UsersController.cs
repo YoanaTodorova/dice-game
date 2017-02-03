@@ -64,5 +64,13 @@ namespace DiceGame.Controllers
             _repository.Delete(id);
             return Task.FromResult(Request.CreateResponse(HttpStatusCode.OK));
         }
+
+        //[HttpGet]
+        //[ActionName("getAmount")]
+        //public Task<HttpResponseMessage> GetAmount([FromUri]int id)
+        //{
+        //    var amount = _repository.GetUserAmount(id);
+        //    return Task.FromResult(Request.CreateResponse(HttpStatusCode.OK, amount));
+        //}
     }
 }

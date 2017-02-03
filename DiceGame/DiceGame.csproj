@@ -126,6 +126,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Filters\AddPlayerAttribute.cs" />
     <Compile Include="Filters\ForbiddenExceptionAttribute.cs" />
     <Compile Include="Filters\NotFoundExceptionAttribute.cs" />
     <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Balance.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GamesRepository.cs" />
     <Compile Include="Models\Helpers\TokenManager.cs" />

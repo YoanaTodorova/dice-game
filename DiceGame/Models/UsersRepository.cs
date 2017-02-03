@@ -62,5 +62,13 @@ namespace DiceGame
         {
             return Users.Values.ToList();
         }
+
+        public Balance GetUserAmount(int id)
+        {
+            if (!Users.ContainsKey(id))
+                throw new KeyNotFoundException("No user with this id.");
+
+            return Get(id).CurrentBalance;
+        }
     }
 }

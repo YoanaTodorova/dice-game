@@ -8,11 +8,27 @@ namespace DiceGame.Models
 {
     public class User
     {
+        private static int LastId = 1;
+        
         public int Id { get; set; }
         public string Email { get; set; }
         public string FullName { get; set; }
         public string Password { get; set; }
 
-        public int Amount { get; set; }
+        public Balance CurrentBalance { get; set; }
+
+        public User()
+            : base()
+        {
+            this.Id = NextId();
+            this.CurrentBalance = new Balance(this.Id);
+        }
+
+        private int NextId()
+        {
+            var id = LastId;
+            LastId += 1;
+            return id;
+        }
     }
 }

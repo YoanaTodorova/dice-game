@@ -9,7 +9,7 @@ using DiceGame.Filters;
 using DiceGame.Models;
 
 namespace DiceGame.Controllers
-{  
+{
     [CustomAuthorize]
     public class GamesController : ApiController
     {
@@ -40,12 +40,11 @@ namespace DiceGame.Controllers
 
         // POST api/games
         [HttpPost]
+        [AddPlayerToGame]
+        // can't pass autenticatedUser, because it's Web Api and can't bind multiple parameters
         public Task<HttpResponseMessage> Create([FromBody] Game game)
         {
-            var identityId = Int32.Parse(User.Identity.Name);
-            User identityUser = _userRepository.Get(identityId);
-
-            _repository.Create(game, identityUser);
+            _repository.Create(game);
             return Task.FromResult(Request.CreateResponse(HttpStatusCode.Created));
         }
 
